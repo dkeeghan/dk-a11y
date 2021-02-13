@@ -1,0 +1,66 @@
+{
+  "name": "@dkwd/dk-a11y",
+  "version": "0.0.1",
+  "description": "Support library to enhance and simplify common Accessibility functions",
+  "author": "Damian Keeghan",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "engines": {
+    "node": ">= 12.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkeeghan/dk-a11y"
+  },
+  "bugs": {
+    "url": "https://github.com/dkeeghan/dk-a11y/issues"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "last 2 iOS versions",
+    "last 3 Android versions",
+    "last 2 Samsung versions",
+    "not dead"
+  ],
+  "scripts": {
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier"
+  },
+  "devDependencies": {
+    "@deloitte-digital-au/eslint-config": "^3.4.0",
+    "es-dev-server": "^1.55.0",
+    "eslint": "^7.3.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@deloitte-digital-au/eslint-config"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
